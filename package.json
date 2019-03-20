@@ -1,0 +1,80 @@
+{
+  "name": "dotup-vscode-diagnostics-search",
+  "displayName": "vscode diagnostics search",
+  "description": "Open links with diagnostic informations",
+  "version": "0.0.1",
+  "main": "./out/extension.js",
+  "engines": {
+    "vscode": "^1.26.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "capabilities": {
+    "codeActionProvider": "true"
+  },
+  "contributes": {
+    "configuration": {
+      "title": "Diagnostics search configuration.",
+      "type": "object",
+      "properties": {
+        "dotup.diagnostics-search.searchCommands": {
+          "type": [
+            "array",
+            "object"
+          ],
+          "default": [
+            {
+              "name": "Google",
+              "command": "Start-Process",
+              "executable": "chrome.exe",
+              "url": "https://www.google.com/search?q=",
+              "queryParameter": "${languageId} ${message}",
+              "maxQueryParameterLength": 100
+            },
+            {
+              "name": "Stackoverflow",
+              "command": "Start-Process",
+              "executable": "chrome.exe",
+              "url": "https://stackoverflow.com/search?q=",
+              "queryParameter": "${languageId} ${code} ${message}"
+            },
+            {
+              "name": "Bing code only",
+              "command": "start",
+              "executable": "microsoft-edge:",
+              "url": "https://www.bing.de/search?q=",
+              "queryParameter": "${languageId} ${code}",
+              "maxQueryParameterLength": 20
+            }
+          ],
+          "description": "Placeholder are ${languageId}, ${code} and ${message}"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test-mocha": "node node_modules/mocha/bin/mocha --require ts-node/register src/test/*.test.ts --reporter spec",
+    "pack": "vsce package",
+    "publish-major": "vsce publish major",
+    "publish-minor": "vsce publish minor",
+    "publish-patch": "vsce publish patch",
+    "publish": "vsce publish",
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.21",
+    "@types/mocha": "^2.2.42",
+    "tslint-microsoft-contrib": "^6.1.0",
+    "typescript": "^3.3.1",
+    "vscode": "^1.1.28",
+    "tslint": "^5.12.1"
+  }
+}
