@@ -40,14 +40,9 @@ export class SearchProvider implements vscode.CodeActionProvider {
 
     // maxQueryParameterLength is optional, set a default value
     this.searchProvider.forEach(p => p.maxQueryParameterLength === undefined ? 1000 : p.maxQueryParameterLength);
-
-    console.log(config);
-
   }
 
   public dispose(): void {
-    console.log('dispose');
-
     this.diagnosticCollection.clear();
     this.diagnosticCollection.dispose();
     this.command.dispose();
