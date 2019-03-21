@@ -1,65 +1,78 @@
-# dotup-vscode-diagnostics-search README
+# Diagnostic search for Visual Studio Code
 
-This is the README for your extension "dotup-vscode-diagnostics-search". After writing up a brief description, we recommend including the following sections.
+## Description
 
-## Features
+Diagnostic search is a VSCode Extension which extracts diagnostic messages and open a browser with the selected error. Works with all languages.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
 
-For example if there is an image subfolder under your extension project workspace:
+![dotup-vscode-diagnostics-search Video](https://raw.githubusercontent.com/dotupNET/dotup-vscode-diagnostics-search/master/images/video2.gif)
 
-\!\[feature X\]\(images/feature-x.png\)
+## Installation
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+You can browse and install extensions from within VS Code. Press `Ctrl+P` and narrow down the list commands by typing `ext install dotup-vscode-diagnostics-search`.
 
-## Requirements
+Or got to the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/search?term=dotup&target=VSCode)
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Usage
 
-## Extension Settings
+Place the cursor on detected issues (highlighted with red squiggles). Clicking on the Code Action lightbulb or using the Quick Fix command Ctrl+. will display your configured search entries. Select the desired entry and confirm with enter or mouse click. The extension opens a browser window with the selected error message.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
 
-For example:
+## Extension Settings:
 
-This extension contributes the following settings:
+* `dotup.diagnostics-search.searchCommands`
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+Default value:
 
-## Known Issues
+```json
+"default": [
+  {
+    "name": "Google",
+    "command": "Start-Process",
+    "executable": "chrome.exe",
+    "url": "https://www.google.com/search?q=",
+    "queryParameter": "${languageId} ${message}",
+    "maxQueryParameterLength": 100
+  },
+  {
+    "name": "Stackoverflow",
+    "command": "Start-Process",
+    "executable": "chrome.exe",
+    "url": "https://stackoverflow.com/search?q=",
+    "queryParameter": "${languageId} ${code} ${message}"
+  },
+  {
+    "name": "Bing code only",
+    "command": "start",
+    "executable": "microsoft-edge:",
+    "url": "https://www.bing.de/search?q=",
+    "queryParameter": "${languageId} ${code}",
+    "maxQueryParameterLength": 20
+  }
+]
+```
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Parameter:
+- name: The context menu title
+- command: [Start-Process][Powershell Start-Process] or `start` to open a Windows 10 app link
+- executable: Application to start with url and queryParameter
+- url: Url of the search website
+- queryParameter: 
+- maxQueryParameterLength: Error message is truncated to this length. (Optional)
+
+`queryParameter` placeholders:
+- ${languageId} - Language id of the current editor document
+- ${code} - Diagnostic code from select error
+- ${message} - Diagnostic message from selected error
+
+---
+
+[Powershell Start-Process]: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process?view=powershell-6
 
 ## Release Notes
-
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+Fixes/Features:
+- Initial release
 
 **Enjoy!**
