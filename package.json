@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1",
+  "version": "1.0.0",
   "name": "dotup-vscode-diagnostics-search",
   "displayName": "vscode diagnostics search",
   "description": "Open links with diagnostic informations",
