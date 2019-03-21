@@ -57,17 +57,16 @@ Parameter:
 - command: [Start-Process][Powershell Start-Process] or `start` to open a Windows 10 app link
 - executable: Application to start with url and queryParameter
 - url: Url of the search website
-- queryParameter: 
+- queryParameter: Define the url arguments with placeholder.
 - maxQueryParameterLength: Error message is truncated to this length. (Optional)
 
 `queryParameter` placeholders:
-- ${languageId} - Language id of the current editor document
-- ${code} - Diagnostic code from select error
-- ${message} - Diagnostic message from selected error
+- ${languageId} - Replaced with `language` id of the current editor document
+- ${code} - Replaced with diagnostic `code` from select error
+- ${message} - Replaaced with diagnostic `message` from selected error
 
 ---
-
-[Powershell Start-Process]: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process?view=powershell-6
+![Screenshot](https://raw.githubusercontent.com/dotupNET/dotup-vscode-diagnostics-search/master/images/dotup-vscode-diagnostics-search-1.png)
 
 ## Release Notes
 ### 1.0.0
@@ -76,3 +75,5 @@ Fixes/Features:
 - Initial release
 
 **Enjoy!**
+
+[Powershell Start-Process]: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process?view=powershell-6
