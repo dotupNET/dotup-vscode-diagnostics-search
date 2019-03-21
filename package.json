@@ -51,15 +51,8 @@
               "command": "Start-Process",
               "executable": "chrome.exe",
               "url": "https://stackoverflow.com/search?q=",
-              "queryParameter": "${languageId} ${code} ${message}"
-            },
-            {
-              "name": "Bing code only",
-              "command": "start",
-              "executable": "microsoft-edge:",
-              "url": "https://www.bing.de/search?q=",
-              "queryParameter": "${languageId} ${code}",
-              "maxQueryParameterLength": 20
+              "queryParameter": "${languageId} ${code} ${message}",
+              "maxQueryParameterLength": 30
             }
           ],
           "description": "Placeholder are ${languageId}, ${code} and ${message}"

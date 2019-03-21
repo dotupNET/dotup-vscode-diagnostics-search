@@ -5,7 +5,7 @@
 Diagnostic search is a VSCode Extension which extracts diagnostic messages and open a browser with the selected error. Works with all languages.
 
 
-![dotup-vscode-diagnostics-search Video](https://raw.githubusercontent.com/dotupNET/dotup-vscode-diagnostics-search/master/images/video2.gif)
+![dotup-vscode-diagnostics-search Video](https://raw.githubusercontent.com/dotupNET/dotup-vscode-diagnostics-search/master/images/video.gif)
 
 ## Installation
 
@@ -15,14 +15,14 @@ Or got to the [Visual Studio Code Marketplace](https://marketplace.visualstudio.
 
 ## Usage
 
-Place the cursor on detected issues (highlighted with red squiggles). Clicking on the Code Action lightbulb or using the Quick Fix command Ctrl+. will display your configured search entries. Select the desired entry and confirm with enter or mouse click. The extension opens a browser window with the selected error message.
+Place the cursor on detected issues (highlighted with red squiggles). Clicking on the Code Action lightbulb or using the Quick Fix command `Ctrl+.` will display your configured search entries. Select the desired entry and confirm with enter or mouse click. The extension opens a browser window with the selected error message.
 
 
 ## Extension Settings:
 
 * `dotup.diagnostics-search.searchCommands`
 
-Default value:
+Example:
 
 ```json
 "default": [
@@ -42,7 +42,7 @@ Default value:
     "queryParameter": "${languageId} ${code} ${message}"
   },
   {
-    "name": "Bing code only",
+    "name": "Bing (edge)",
     "command": "start",
     "executable": "microsoft-edge:",
     "url": "https://www.bing.de/search?q=",
@@ -54,16 +54,16 @@ Default value:
 
 Parameter:
 - name: The context menu title
-- command: [Start-Process][Powershell Start-Process] or `start` to open a Windows 10 app link
+- command: [Start-Process][Powershell Start-Process] for executables or `start` to open a Windows 10 app link
 - executable: Application to start with url and queryParameter
 - url: Url of the search website
 - queryParameter: Define the url arguments with placeholder.
 - maxQueryParameterLength: Error message is truncated to this length. (Optional)
 
 `queryParameter` placeholders:
-- ${languageId} - Replaced with `language` id of the current editor document
-- ${code} - Replaced with diagnostic `code` from select error
-- ${message} - Replaaced with diagnostic `message` from selected error
+- ${languageId} - Replaced by `language` id of the current editor document
+- ${code} - Replaced by diagnostic `code` of select error
+- ${message} - Replaced by diagnostic `message` of selected error
 
 ---
 ![Screenshot](https://raw.githubusercontent.com/dotupNET/dotup-vscode-diagnostics-search/master/images/dotup-vscode-diagnostics-search-1.png)
