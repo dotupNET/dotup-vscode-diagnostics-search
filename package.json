@@ -90,6 +90,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dotupNET/dotup-vscode-interface-generator.git"
+    "url": "https://github.com/dotupNET/dotup-vscode-diagnostics-search.git"
   }
 }
