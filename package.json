@@ -6,7 +6,7 @@
   "publisher": "dotup",
   "author": "Peter Ullrich, dotup IT solutions",
   "license": "MIT",
-  "icon": "images/tss_logo_128.png",
+  "icon": "images/tss_logo_800.png",
   "main": "./out/extension.js",
   "engines": {
     "vscode": "^1.26.0"
